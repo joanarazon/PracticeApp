@@ -7,27 +7,33 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  ImageBackground,
 } from "react-native";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import Feather from "@expo/vector-icons/Feather";
 
 const Profile = () => {
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-      {/* Profile Header */}
-      <View style={styles.header}>
-        <Text style={styles.profileText}>Profile</Text>
-      </View>
-
-      {/* Profile Picture and Info */}
-      <View style={styles.profileContainer}>
-        <Image
-          source={{
-            uri: "https://i.pinimg.com/originals/df/5f/5b/df5f5b1b174a2b4b6026cc6c8f9395c1.jpg",
-          }} // Replace with actual image URL
-          style={styles.profileImage}
-        />
-        <Text style={styles.nameText}>Joana Eve Razon</Text>
-        <Text style={styles.roleText}>Senior Web Developer</Text>
-      </View>
+      {/* Banner Image */}
+      <ImageBackground
+        source={{
+          uri: "https://jooinn.com/images/nature-background-24.jpg",
+        }}
+        style={styles.bannerImage}
+      >
+        {/* Profile Picture */}
+        <View style={styles.profileContainer}>
+          <Image
+            source={{
+              uri: "https://i.pinimg.com/originals/df/5f/5b/df5f5b1b174a2b4b6026cc6c8f9395c1.jpg",
+            }}
+            style={styles.profileImage}
+          />
+          <Text style={styles.nameText}>Joana Eve Razon</Text>
+          <Text style={styles.roleText}>Senior Web Developer</Text>
+        </View>
+      </ImageBackground>
 
       {/* Stats Section */}
       <View style={styles.statsContainer}>
@@ -47,13 +53,22 @@ const Profile = () => {
 
       {/* Buttons */}
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Edit Profile</Text>
+        <Text style={styles.buttonText}>
+          <AntDesign name="edit" size={24} color="white" />
+          Edit Profile
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Notifications</Text>
+        <Text style={styles.buttonText}>
+          <AntDesign name="notification" size={24} color="white" />
+          Notifications
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Settings</Text>
+        <Text style={styles.buttonText}>
+          <Feather name="settings" size={24} color="white" />
+          Settings
+        </Text>
       </TouchableOpacity>
 
       {/* Newsletter Subscription */}
@@ -70,36 +85,37 @@ const Profile = () => {
 
       {/* Version */}
       <Text style={styles.versionText}>All Rights Reserved (2024).</Text>
+
+      {/* Instagram Icon */}
+      <TouchableOpacity style={styles.instagramIcon}>
+        <AntDesign name="instagram" size={24} color="white" />
+      </TouchableOpacity>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    padding: 20,
-  },
   scrollViewContainer: {
     alignItems: "center",
+    paddingBottom: 60, // Space for the Instagram icon
   },
-  header: {
+  bannerImage: {
     width: "100%",
+    height: 250,
     alignItems: "center",
-    paddingVertical: 20,
-  },
-  profileText: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#fff",
+    justifyContent: "center",
   },
   profileContainer: {
     alignItems: "center",
-    marginVertical: 20,
+    marginTop: 100,
   },
   profileImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    borderWidth: 4,
+    borderColor: "#fff",
+    marginTop: 150,
     backgroundColor: "#ff6b6b",
   },
   nameText: {
@@ -110,14 +126,13 @@ const styles = StyleSheet.create({
   },
   roleText: {
     fontSize: 16,
-    color: "#8E8E8E",
+    color: "#E1E1E1",
   },
   statsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
-    marginVertical: 20,
-    color: "#fff",
+    marginTop: 110,
   },
   statBox: {
     alignItems: "center",
@@ -158,7 +173,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginRight: 10,
-    color: "#fff",
   },
   subscribeButton: {
     backgroundColor: "#8E44AD",
@@ -169,12 +183,21 @@ const styles = StyleSheet.create({
   subscribeButtonText: {
     color: "#FFFFFF",
     fontWeight: "bold",
-    color: "#fff",
   },
   versionText: {
     fontSize: 12,
     color: "#D1D1D1",
-    marginTop: 110,
+    marginTop: 40,
+  },
+  instagramIcon: {
+    position: "absolute",
+    bottom: 20,
+    right: 20,
+    backgroundColor: "#8E44AD",
+    padding: 12,
+    borderRadius: 30,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
